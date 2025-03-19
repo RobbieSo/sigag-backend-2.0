@@ -12,7 +12,6 @@ import com.example.GymAdmin.repository.IPersonaRepository;
 import com.example.GymAdmin.repository.IRecuperacionRepository;
 import com.example.GymAdmin.repository.RoleRepository;
 import com.example.GymAdmin.repository.UserRepository;
-import com.example.GymAdmin.service.ITwilioServicePhone;
 import com.example.GymAdmin.service.impl.IRecuperacionService;
 import com.example.GymAdmin.service.impl.JwtBlacklistService;
 import com.example.GymAdmin.util.JwtUtil;
@@ -50,7 +49,7 @@ public class AuthController {
 
     private final IPersonaRepository iPersonaRepository;
 
-    private final ITwilioServicePhone iTwilioServicePhone;
+
 
     private final JavaMailSender mailSender;
 
@@ -67,7 +66,7 @@ public class AuthController {
             UserDetailsService userDetailsService,
             UserRepository userRepository,
             RoleRepository roleRepository,
-            PasswordEncoder passwordEncoder, IPersonaRepository iPersonaRepository, ITwilioServicePhone iTwilioServicePhone, JavaMailSender mailSender, IRecuperacionRepository iRecuperacionRepository, IRecuperacionService iRecuperacionService,
+            PasswordEncoder passwordEncoder, IPersonaRepository iPersonaRepository, JavaMailSender mailSender, IRecuperacionRepository iRecuperacionRepository, IRecuperacionService iRecuperacionService,
             JwtBlacklistService jwtBlacklistService) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
@@ -76,7 +75,7 @@ public class AuthController {
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.iPersonaRepository = iPersonaRepository;
-        this.iTwilioServicePhone = iTwilioServicePhone;
+
         this.mailSender = mailSender;
         this.iRecuperacionService = iRecuperacionService;
         this.iRecuperacionRepository = iRecuperacionRepository;
