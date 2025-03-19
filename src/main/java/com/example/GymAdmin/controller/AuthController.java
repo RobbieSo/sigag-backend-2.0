@@ -88,8 +88,8 @@ public class AuthController {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
-        String token = jwtUtil.generateToken(userDetails);
-
+        String role = userRepository.findByUsername(request.getUsername()).get().getRoles().stream().iterator().next().getName().name();
+        String token = jwtUtil.generateToken(userDetails, role);
         return ResponseEntity.ok(new AuthResponse(token));
     }
 

@@ -43,6 +43,17 @@ public class JwtUtil {
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 1 hora
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+
+                .compact();
+    }
+
+    public String generateToken(UserDetails userDetails,String role) {
+        return Jwts.builder()
+                .setSubject(userDetails.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 1 hora
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .claim("role", role)
                 .compact();
     }
 
