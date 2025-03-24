@@ -42,16 +42,5 @@ public class PagoController {
         return ResponseEntity.ok(prueba);
     }
 
-    @ResponseBody
-    @PostMapping(value ="/actualizar")
-    public ResponseEntity<PagoResponse> actualizarPago(@RequestBody PagoRequest pagoRequest){
-        PagoResponse prueba = iPagoService.update(pagoRequest, pagoRequest.getIdPago());
-        return ResponseEntity.ok(prueba);
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarPago(@PathVariable Integer id) {
-        iPagoService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
 }

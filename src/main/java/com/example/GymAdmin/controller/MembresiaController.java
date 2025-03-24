@@ -45,16 +45,5 @@ public class MembresiaController {
         return ResponseEntity.ok(prueba);
     }
 
-    @ResponseBody
-    @PostMapping(value ="/actualizar")
-    public ResponseEntity<MembresiaResponse> actualizarMembresia(@RequestBody MembresiaRequest membresiaRequest){
-        MembresiaResponse prueba = iMembresiaService.update(membresiaRequest, membresiaRequest.getIdMembresia());
-        return ResponseEntity.ok(prueba);
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarMembresia(@PathVariable Integer id) {
-        iMembresiaService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
 }

@@ -45,16 +45,5 @@ public class ServicioController {
         return ResponseEntity.ok(prueba);
     }
 
-    @ResponseBody
-    @PostMapping(value ="/actualizar")
-    public ResponseEntity<ServicioResponse> actualizarServicio(@RequestBody ServicioRequest servicioRequest){
-        ServicioResponse prueba = iServicioService.update(servicioRequest  , servicioRequest.getIdServicio());
-        return ResponseEntity.ok(prueba);
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarServicio(@PathVariable Integer id) {
-        iServicioService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
 }
