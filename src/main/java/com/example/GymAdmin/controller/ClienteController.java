@@ -42,6 +42,14 @@ public class ClienteController {
         return ResponseEntity.ok(prueba);
     }
 
+    @ResponseBody
+    @GetMapping(value ="/listaClientesPorVencer")
+    public ResponseEntity<List<ClienteResponse>> buscarClientesporvencer(){
+        List<ClienteResponse> prueba = iClienteService.getClientesPorVencer();
+        return ResponseEntity.ok(prueba);
+    }
+
+
 
 
 }

@@ -1,18 +1,24 @@
 package com.example.GymAdmin.service.impl;
 
+import com.example.GymAdmin.dto.membresia.MembresiaResponse;
 import com.example.GymAdmin.dto.request.ClienteRequest;
 import com.example.GymAdmin.dto.response.ClienteResponse;
+import com.example.GymAdmin.dto.response.ContratoResponse;
 import com.example.GymAdmin.entity.ClienteEntity;
 import com.example.GymAdmin.entity.PersonaEntity;
 import com.example.GymAdmin.repository.IClienteRepository;
 import com.example.GymAdmin.repository.IPersonaRepository;
 import com.example.GymAdmin.service.IClienteService;
+import com.example.GymAdmin.service.IContratoService;
+import com.example.GymAdmin.service.IMembresiaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.GymAdmin.util.MmebresiaUtil.calculateAdd;
 
 
 @Service
@@ -21,10 +27,16 @@ public class ClienteServiceImpl implements IClienteService{
 
     private final IPersonaRepository iPersonaRepository;
     private final IClienteRepository iClienteRepository;
+    private final IContratoService iContratoService;
 
-    public ClienteServiceImpl(IPersonaRepository iPersonaRepository, IClienteRepository iClienteRepository) {
+    private final IMembresiaService iMembresiaService;
+
+
+    public ClienteServiceImpl(IPersonaRepository iPersonaRepository, IClienteRepository iClienteRepository, IContratoService iContratoService, IMembresiaService iMembresiaService) {
         this.iPersonaRepository = iPersonaRepository;
         this.iClienteRepository = iClienteRepository;
+        this.iContratoService = iContratoService;
+        this.iMembresiaService = iMembresiaService;
     }
 
     @Override
@@ -137,5 +149,21 @@ public class ClienteServiceImpl implements IClienteService{
             iPersonaRepository.delete(cliente.getPersona()); // También eliminamos la persona
         });
 
+    }
+
+    @Override
+    public List<ClienteResponse> getClientesPorVencer() {
+        List<ClienteResponse> listaCliente = new ArrayList<>();
+        List<ContratoResponse> listaContrato = iContratoService.findAll();
+        List<MembresiaResponse> listaMembresia = iMembresiaService.findAll();
+        List<Integer> idMembresias = new ArrayList<>();
+        for(ContratoResponse sub: listaContrato){
+            if(calculateAdd(sub.getMembresia())){
+                idMembresias.add(sub.getMembresia().getIdMembresia());
+                listaCliente.add(sub.getCliente());
+            }
+
+        }
+        return listaCliente;
     }
 }
