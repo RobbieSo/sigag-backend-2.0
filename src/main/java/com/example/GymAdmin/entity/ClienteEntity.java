@@ -33,4 +33,8 @@ public class ClienteEntity  implements Serializable {
     private List<NotificacionEntity> notificacionEntities;
 
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AsistenciaEntity> asistenciaEntities;
+
+
 }

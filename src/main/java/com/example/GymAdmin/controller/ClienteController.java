@@ -1,7 +1,11 @@
 package com.example.GymAdmin.controller;
 
 
+import com.example.GymAdmin.dto.request.AsistenciaRequest;
+
+import com.example.GymAdmin.dto.request.AsistenciaResponseCr;
 import com.example.GymAdmin.dto.request.ClienteRequest;
+import com.example.GymAdmin.dto.response.AsistenciaResponse;
 import com.example.GymAdmin.dto.response.ClienteResponse;
 import com.example.GymAdmin.service.IClienteService;
 import lombok.AllArgsConstructor;
@@ -46,6 +50,20 @@ public class ClienteController {
     @GetMapping(value ="/listaClientesPorVencer")
     public ResponseEntity<List<ClienteResponse>> buscarClientesporvencer(){
         List<ClienteResponse> prueba = iClienteService.getClientesPorVencer();
+        return ResponseEntity.ok(prueba);
+    }
+
+    @ResponseBody
+    @PostMapping(value ="/registrarAsistencia")
+    public ResponseEntity<AsistenciaResponse> verificarAsistencia(@RequestBody AsistenciaRequest asistenciaRequest){
+        AsistenciaResponse prueba = iClienteService.getRegistraAsistencia(asistenciaRequest);
+        return ResponseEntity.ok(prueba);
+    }
+
+    @ResponseBody
+    @GetMapping(value ="/listaAsistenciaPorCliente")
+    public ResponseEntity<List<AsistenciaResponseCr>> buscarAsistenciasdeClientes(@RequestParam("id") Integer id){
+        List<AsistenciaResponseCr> prueba = iClienteService.getAsistenciasByCliente(id);
         return ResponseEntity.ok(prueba);
     }
 

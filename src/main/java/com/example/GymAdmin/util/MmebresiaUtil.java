@@ -1,6 +1,7 @@
 package com.example.GymAdmin.util;
 
 import com.example.GymAdmin.dto.membresia.MembresiaResponse;
+import com.example.GymAdmin.entity.MembresiaEntity;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -34,6 +35,16 @@ public class MmebresiaUtil {
 
         }
 
+        return flag;
+    }
+
+    public static Boolean validateAssis(MembresiaEntity memebresia){
+        boolean flag = false;
+        LocalDateTime fechaVigencia =memebresia.getVigencia();
+        LocalDateTime fechaActual = LocalDateTime.now();
+        if(fechaActual.isBefore(fechaVigencia)){
+            flag= true;
+        }
         return flag;
     }
 }

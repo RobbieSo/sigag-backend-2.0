@@ -5,7 +5,6 @@ import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Builder
 @Setter
 @Getter

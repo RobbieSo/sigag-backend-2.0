@@ -121,6 +121,7 @@ public class ContratoServiceImpl implements IContratoService {
                 pagosResponse.add(pagoResponse);
             }
         }
+        response.setIdContrato(contratoEntity.getIdContrato());
         response.setCliente(clienteResponse);
         response.setMembresia(membresiaResponse);
         response.setPagos(pagosResponse);

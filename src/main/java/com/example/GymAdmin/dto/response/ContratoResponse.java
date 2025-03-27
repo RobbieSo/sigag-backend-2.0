@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 public class ContratoResponse {
+    private Integer idContrato;
     private ClienteResponse cliente;
     private MembresiaResponse membresia;
     private List<PagoResponse> pagos;
