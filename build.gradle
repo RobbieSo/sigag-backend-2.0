@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.2'
-	id 'io.spring.dependency-management' version '1.1.7'
+	id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.example'
@@ -22,16 +22,21 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
-	implementation 'org.postgresql:postgresql:42.7.5' // ✅ Solo PostgreSQL
+	implementation 'org.postgresql:postgresql:42.7.5'
+	runtimeOnly 'mysql:mysql-connector-java:8.0.33' // Si estás usando MySQL localmente
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.2.0' // Por si acaso lo usas local
 
+	// JWT
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
+	// Twilio y correo
 	implementation 'com.twilio.sdk:twilio:10.6.10'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
+	// Lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
