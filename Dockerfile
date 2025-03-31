@@ -1,18 +1,13 @@
-# Etapa 1: Construcción del proyecto
-FROM gradle:8.6-jdk17 as builder
-WORKDIR /home/gradle/project
+# Etapa 1: Construcción del JAR usando Gradle con JDK 17
+FROM gradle:8.6.0-jdk17 AS build
+WORKDIR /app
 COPY --chown=gradle:gradle . .
-
-# Dale permisos de ejecución al wrapper
 RUN chmod +x ./gradlew
-
-# Ejecuta la construcción con el wrapper
 RUN ./gradlew build --no-daemon
 
-# Etapa 2: Imagen final con solo el JAR
+# Etapa 2: Imagen final solo con el JAR
 FROM eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
 WORKDIR /app
-COPY --from=builder /home/gradle/project/build/libs/*.jar app.jar
-
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY --from=build /app/build/libs/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
