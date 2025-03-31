@@ -19,7 +19,7 @@ import com.example.GymAdmin.service.IClienteService;
 import com.example.GymAdmin.service.IContratoService;
 import com.example.GymAdmin.service.IMembresiaService;
 import jakarta.transaction.Transactional;
-import org.checkerframework.checker.units.qual.C;
+//import org.checkerframework.checker.units.qual.C//
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
