@@ -3,7 +3,10 @@ FROM gradle:8.6-jdk17 as builder
 WORKDIR /home/gradle/project
 COPY --chown=gradle:gradle . .
 
-# Usamos el wrapper de Gradle incluido en el proyecto
+# Dale permisos de ejecución al wrapper
+RUN chmod +x ./gradlew
+
+# Ejecuta la construcción con el wrapper
 RUN ./gradlew build --no-daemon
 
 # Etapa 2: Imagen final con solo el JAR
