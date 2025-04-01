@@ -17,9 +17,10 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowedOrigins(List.of(
-            "http://localhost:5173",     // desarrollo local
-            "http://aresgym.site",       // producción desde navegador
-            "http://frontend:80"         // contenedor del frontend dentro de Docker
+            "http://localhost:5173",         // Dev local
+            "http://31.220.51.252:8080",     // IP pública con frontend
+            "http://aresgym.site",           // Dominio real
+            "https://aresgym.site"           // Por si habilitas SSL después
         ));
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
