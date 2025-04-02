@@ -15,7 +15,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 "http://31.220.51.252:8080",
                 "http://aresgym.site",
                 "https://aresgym.site",
-                "https://special-definite-eft.ngrok-free.app"
+                "https://aresgym.ngrok.app"  // 👉 Subdominio personalizado de Ngrok
             )
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
             .allowedHeaders("*")
