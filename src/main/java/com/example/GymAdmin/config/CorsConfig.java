@@ -9,8 +9,13 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-            .allowedOrigins("http://31.220.51.252", "https://*.ngrok.io") // Aquí puedes añadir otros subdominios si usas ngrok
+        registry.addMapping("/")
+            .allowedOrigins(
+                "http://localhost:5173",
+                "http://31.220.51.252:8080",
+                "http://aresgym.site",
+                "https://aresgym.site"
+            )
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
             .allowedHeaders("*")
             .allowCredentials(true);
