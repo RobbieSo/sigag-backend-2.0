@@ -9,12 +9,13 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/")
+        registry.addMapping("/**")
             .allowedOrigins(
                 "http://localhost:5173",
                 "http://31.220.51.252:8080",
                 "http://aresgym.site",
-                "https://aresgym.site"
+                "https://aresgym.site",
+                "https://special-definite-eft.ngrok-free.app"
             )
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
             .allowedHeaders("*")
