@@ -31,7 +31,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtFilter jwtFilter) throws Exception {
         http
-
+                //.cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll() // 🔓 Libre acceso a auth
                         .requestMatchers("/cliente/**","/servicio/**", "/membresia/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN") // 🟢 Solo usuarios autenticados
