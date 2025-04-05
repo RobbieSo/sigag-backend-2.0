@@ -5,14 +5,14 @@ FROM eclipse-temurin:17-jdk AS builder
 WORKDIR /app
 
 # Copiar archivos de configuración de Gradle y scripts de ejecución
-COPY gradlew .
-COPY gradle gradle
+COPY gradlew . 
+COPY gradle gradle 
 COPY build.gradle settings.gradle ./
 
 # Dar permisos de ejecución al wrapper de Gradle
 RUN chmod +x gradlew
 
-# Descarga de dependencias para cachear en capas intermedias
+# Descargar dependencias para cachear en capas intermedias
 RUN ./gradlew dependencies --no-daemon
 
 # Copiar el código fuente
@@ -30,8 +30,12 @@ WORKDIR /app
 # Copiar el JAR generado desde la etapa anterior
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-# Exponer el puerto de la aplicación
+# Copiar los certificados SSL al contenedor
+COPY ./certs /app/certs
+
+# Exponer los puertos para HTTP y HTTPS
 EXPOSE 8080
+EXPOSE 8443
 
 # Comando de ejecución
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Djavax.net.ssl.keyStore=/app/certs/ssl-cert.p12", "-Djavax.net.ssl.keyStorePassword=yourpassword", "-jar", "app.jar"]
