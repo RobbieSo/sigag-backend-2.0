@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = "admin")
 public class AdminController {
 

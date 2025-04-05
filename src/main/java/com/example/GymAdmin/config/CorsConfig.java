@@ -17,7 +17,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         // Especificar los dominios permitidos
-        config.setAllowedOrigins(List.of("http://localhost:5173", "https://midominio.com"));
+        config.setAllowedOrigins(List.of("http://localhost:5173","http://localhost:4200", "https://app-testing-deploy.web.app"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true); // Permitir credenciales

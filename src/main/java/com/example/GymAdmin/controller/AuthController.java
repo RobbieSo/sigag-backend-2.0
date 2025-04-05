@@ -35,8 +35,9 @@ import java.util.Random;
 import java.util.Set;
 
 
-@CrossOrigin(origins = "http://localhost:5000/")
+
 @RestController
+@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
 

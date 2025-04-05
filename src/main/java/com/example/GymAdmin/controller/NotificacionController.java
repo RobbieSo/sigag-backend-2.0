@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = "notificacion")
 public class NotificacionController {
 
