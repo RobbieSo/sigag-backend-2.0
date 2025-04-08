@@ -2,32 +2,33 @@ package com.example.GymAdmin.util;
 
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
 @Component
 public class GeneralUtilities {
 
-    public LocalDateTime calculateVigencia(String plan, LocalDateTime fechaInicio){
+    public LocalDate calculateVigencia(String plan, LocalDate fechaInicio) {
 
-        LocalDateTime localDateTime = LocalDateTime.now();
-        switch (plan) {
-            case "diario":
-                localDateTime=  fechaInicio.plusDays(1);
-                break;
-            case "semanal":
-                localDateTime=  fechaInicio.plusWeeks(1);
-                break;
-            case "mensual" :
-                localDateTime=   fechaInicio.plusMonths(1);
-                break;
+        LocalDate vigencia;
+        if (plan.equalsIgnoreCase("diario")) {
+            vigencia = fechaInicio.plusDays(1);
 
-            case "anual" :
-                localDateTime=  fechaInicio.plusYears(1);
-                break;
-            default:
+        } else if (plan.equalsIgnoreCase("semanal")) {
+            vigencia = fechaInicio.plusWeeks(1);
+
+        } else if (plan.equalsIgnoreCase("mensual")) {
+            vigencia = fechaInicio.plusMonths(1);
+
+        } else if (plan.equalsIgnoreCase("anual")) {
+            vigencia = fechaInicio.plusYears(1);
+
+        } else {
+            vigencia = LocalDate.now();
         }
 
-        return localDateTime;
+
+        return vigencia;
     }
 }

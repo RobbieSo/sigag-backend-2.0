@@ -40,8 +40,8 @@ public class MmebresiaUtil {
 
     public static Boolean validateAssis(MembresiaEntity memebresia){
         boolean flag = false;
-        LocalDateTime fechaVigencia =memebresia.getVigencia();
-        LocalDateTime fechaActual = LocalDateTime.now();
+        LocalDate fechaVigencia =memebresia.getVigencia();
+        LocalDate fechaActual = LocalDate.now();
         if(fechaActual.isBefore(fechaVigencia)){
             flag= true;
         }

@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class MembresiaRequest {
     private String horario;
     private String condiciones;
     private Boolean entrenamientoPersonalizado;
-    private LocalDateTime vigencia;
-    private LocalDateTime fechainicio;
+    private LocalDate vigencia;
+    private LocalDate fechainicio;
     private Integer descuento;
     private Boolean asesoria;
     private Boolean estatus;

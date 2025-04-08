@@ -4,6 +4,7 @@ package com.example.GymAdmin.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
@@ -39,10 +40,10 @@ public class MembresiaEntity {
     private Boolean entrenamientoPersonalizado;
 
     @Column(name="vigencia")
-    private LocalDateTime vigencia;
+    private LocalDate  vigencia;
 
     @Column(name="fecha_inicio")
-    private LocalDateTime fechainicio;
+    private LocalDate fechainicio;
 
     @Column(name="descuento")
     private Integer descuento;

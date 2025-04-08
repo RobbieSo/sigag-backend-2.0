@@ -42,7 +42,7 @@ public class MebresiaServiceImpl  implements IMembresiaService {
         member.setHorario(request.getHorario());
         member.setCondiciones(request.getCondiciones());
         member.setEntrenamientoPersonalizado(request.getEntrenamientoPersonalizado());
-        member.setVigencia(generalUtilities.calculateVigencia(request.getPlan(), request.getFechainicio()));
+        member.setVigencia(generalUtilities.calculateVigencia(request.getTipo(), request.getFechainicio()));
         member.setFechainicio(request.getFechainicio());
         member.setDescuento(request.getDescuento());
         member.setAsesoria(request.getAsesoria());
@@ -139,7 +139,7 @@ public class MebresiaServiceImpl  implements IMembresiaService {
         member.setHorario(request.getHorario());
         member.setCondiciones(request.getCondiciones());
         member.setEntrenamientoPersonalizado(request.getEntrenamientoPersonalizado());
-        member.setVigencia(generalUtilities.calculateVigencia(request.getPlan(), request.getFechainicio()));
+        member.setVigencia(generalUtilities.calculateVigencia(request.getTipo(), request.getFechainicio()));
         member.setFechainicio(request.getFechainicio());
         member.setDescuento(request.getDescuento());
         member.setAsesoria(request.getAsesoria());
