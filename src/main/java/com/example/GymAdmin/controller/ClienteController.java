@@ -8,6 +8,7 @@ import com.example.GymAdmin.dto.request.ClienteRequest;
 import com.example.GymAdmin.dto.response.AsistenciaResponse;
 import com.example.GymAdmin.dto.response.ClienteResponse;
 import com.example.GymAdmin.service.IClienteService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class ClienteController {
 
     @ResponseBody
     @PostMapping(value ="/crear")
-    public ResponseEntity<ClienteResponse> crearCliente(@RequestBody ClienteRequest pedidoRequest){
+    public ResponseEntity<ClienteResponse> crearCliente( @Valid @RequestBody ClienteRequest pedidoRequest){
         ClienteResponse prueba = iClienteService.create(pedidoRequest);
         return ResponseEntity.ok(prueba);
     }

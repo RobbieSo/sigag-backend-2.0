@@ -12,6 +12,7 @@ import com.example.GymAdmin.dto.response.PagoResponse;
 import com.example.GymAdmin.dto.servicio.ServicioRequest;
 import com.example.GymAdmin.dto.servicio.ServicioResponse;
 import com.example.GymAdmin.service.*;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +41,7 @@ public class AdminController {
 
     @ResponseBody
     @PostMapping(value ="cliente/actualizar")
-    public ResponseEntity<ClienteResponse> actualizarCliente(@RequestBody ClienteRequest pedidoRequest){
+    public ResponseEntity<ClienteResponse> actualizarCliente(@Valid @RequestBody ClienteRequest pedidoRequest){
         ClienteResponse prueba = iClienteService.update(pedidoRequest, pedidoRequest.getIdCliente());
         return ResponseEntity.ok(prueba);
     }
